@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions for Internet, Location, etc. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IntelliTour">
+        
+        <!-- API Key for Google Maps (Placeholder) -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,6 +31,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".AiPlannerActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".MapActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+            
+        <activity android:name=".WeatherActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".PackagesActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+            
     </application>
 
 </manifest>

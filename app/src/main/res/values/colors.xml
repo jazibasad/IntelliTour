@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <!-- Primary Brand Colors -->
+    <color name="colorPrimary">#1A237E</color> <!-- A deep, trustworthy blue -->
+    <color name="colorPrimaryDark">#101A60</color> <!-- A darker shade for status bar -->
+    <color name="colorAccent">#3949AB</color> <!-- A slightly lighter blue for highlights and buttons -->
+
+    <!-- Standard Colors -->
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    
+    <!-- UI Element Colors -->
+    <color name="window_background">#F0F4F8</color> <!-- A very light, clean blue-gray for backgrounds -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary">#212121</color> <!-- For titles and important text -->
+    <color name="text_secondary">#757575</color> <!-- For subtitles and body text -->
+    <color name="icon_tint">#BDBDBD</color>
 </resources>
