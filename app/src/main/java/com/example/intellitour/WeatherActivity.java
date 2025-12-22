@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    // Try this alternative key. If this fails, you MUST sign up at openweathermap.org for your own key.
+
     private static final String API_KEY = "f6c447ffc4b7b5f1961f90f21aa97d2f";
     private static final String BASE_URL = "https://api.openweathermap.org/";
 
