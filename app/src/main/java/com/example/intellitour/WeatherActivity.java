@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WeatherActivity extends AppCompatActivity {
 
     // TODO: Replace with your actual OpenWeatherMap API Key
-    private static final String API_KEY = "f6c447ffc4b7b5f1961f90f21aa97d2f";
+    private static final String API_KEY = "YOUR_OPENWEATHER_API_KEY_HERE";
     private static final String BASE_URL = "https://api.openweathermap.org/";
 
     @Override
@@ -68,7 +68,14 @@ public class WeatherActivity extends AppCompatActivity {
 
                     tvResult.setText(resultText);
                 } else {
-                    tvResult.setText("Error: City not found or API issue.");
+                    // Show specific error code to help debug
+                    if (response.code() == 401) {
+                        tvResult.setText("Error 401: Invalid API Key. Please check your API key or wait for it to activate.");
+                    } else if (response.code() == 404) {
+                        tvResult.setText("Error 404: City '" + city + "' not found.");
+                    } else {
+                        tvResult.setText("Error: " + response.code() + " " + response.message());
+                    }
                 }
             }
 
