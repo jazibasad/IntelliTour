@@ -52,7 +52,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Budget (USD)"
+            android:hint="Budget (Rs)"
             android:layout_marginBottom="16dp"
             app:startIconDrawable="@android:drawable/ic_menu_manage"
             app:startIconTint="@color/icon_tint">
