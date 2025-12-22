@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AiPlannerActivity extends AppCompatActivity {
 
@@ -17,14 +19,10 @@ public class AiPlannerActivity extends AppCompatActivity {
     private static final Map<String, int[]> PACKAGES = new HashMap<>();
 
     static {
-        // Destination Name (lowercase for easy matching) -> {Price, Days}
-        PACKAGES.put("hunza", new int[]{75000, 7});
-        PACKAGES.put("hunza valley", new int[]{75000, 7});
-        PACKAGES.put("skardu", new int[]{95000, 8});
-        PACKAGES.put("deosai", new int[]{95000, 8});
-        PACKAGES.put("naran", new int[]{50000, 5});
-        PACKAGES.put("kaghan", new int[]{50000, 5});
-        PACKAGES.put("naran kaghan", new int[]{50000, 5});
+        // Destination Name -> {Price, Days}
+        PACKAGES.put("Naran & Kaghan", new int[]{50000, 5});
+        PACKAGES.put("Hunza Valley", new int[]{75000, 7});
+        PACKAGES.put("Skardu & Deosai", new int[]{95000, 8});
     }
 
     @Override
@@ -32,79 +30,65 @@ public class AiPlannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ai_planner);
 
-        EditText etDestination = findViewById(R.id.et_destination);
         EditText etBudget = findViewById(R.id.et_budget);
         EditText etDays = findViewById(R.id.et_days);
         Button btnGenerate = findViewById(R.id.btn_generate_itinerary);
         TextView tvResult = findViewById(R.id.tv_result);
 
         btnGenerate.setOnClickListener(v -> {
-            String destinationInput = etDestination.getText().toString().trim().toLowerCase();
             String budgetInput = etBudget.getText().toString().trim();
             String daysInput = etDays.getText().toString().trim();
 
-            if (destinationInput.isEmpty() || budgetInput.isEmpty() || daysInput.isEmpty()) {
+            if (budgetInput.isEmpty() || daysInput.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Check if destination is valid
-            if (!isValidDestination(destinationInput)) {
-                tvResult.setText("Sorry, we currently only offer packages for:\n- Hunza Valley\n- Skardu & Deosai\n- Naran & Kaghan\n\nPlease check the 'Packages' screen for details.");
                 return;
             }
 
             int budget = Integer.parseInt(budgetInput);
             int days = Integer.parseInt(daysInput);
 
-            // Validate constraints for the specific destination
-            String validPackageName = getPackageName(destinationInput);
-            int[] packageDetails = getPackageDetails(destinationInput);
-            int minPrice = packageDetails[0];
-            int packageDays = packageDetails[1];
+            // Find best matching package
+            String bestPackage = suggestPackage(budget, days);
 
-            if (budget < minPrice) {
-                tvResult.setText("Budget too low for " + validPackageName + ".\nMinimum required: Rs. " + minPrice);
+            if (bestPackage == null) {
+                tvResult.setText("Sorry, no packages match your criteria.\n" +
+                        "Try increasing your budget or changing duration.\n\n" +
+                        "Available options start from Rs. 50,000 for 5 days.");
                 return;
             }
 
-            if (days < packageDays) {
-                tvResult.setText("Duration too short for " + validPackageName + ".\nRecommended duration: " + packageDays + " days.");
-                return;
-            }
-
-            // If all checks pass, generate the itinerary
-            String itinerary = generateItinerary(validPackageName, days, budget);
+            // Generate itinerary for the suggested package
+            String itinerary = generateItinerary(bestPackage, days, budget);
             tvResult.setText(itinerary);
         });
     }
 
-    private boolean isValidDestination(String input) {
-        for (String key : PACKAGES.keySet()) {
-            if (input.contains(key)) return true;
+    private String suggestPackage(int budget, int days) {
+        String bestMatch = null;
+        int maxPriceFound = -1;
+
+        // Iterate through all packages to find one that fits budget and days
+        // We pick the most expensive one within budget to maximize value (or you can pick cheapest)
+        for (Map.Entry<String, int[]> entry : PACKAGES.entrySet()) {
+            String pkgName = entry.getKey();
+            int price = entry.getValue()[0];
+            int duration = entry.getValue()[1];
+
+            if (budget >= price && days >= duration) {
+                if (price > maxPriceFound) {
+                    maxPriceFound = price;
+                    bestMatch = pkgName;
+                }
+            }
         }
-        return false;
-    }
-
-    private String getPackageName(String input) {
-        if (input.contains("hunza")) return "Hunza Valley";
-        if (input.contains("skardu") || input.contains("deosai")) return "Skardu & Deosai";
-        if (input.contains("naran") || input.contains("kaghan")) return "Naran & Kaghan";
-        return "Unknown";
-    }
-
-    private int[] getPackageDetails(String input) {
-        if (input.contains("hunza")) return PACKAGES.get("hunza");
-        if (input.contains("skardu")) return PACKAGES.get("skardu");
-        if (input.contains("deosai")) return PACKAGES.get("deosai");
-        // Default to Naran if matched via logic but specific key needed
-        return PACKAGES.get("naran");
+        return bestMatch;
     }
 
     private String generateItinerary(String destination, int days, int budget) {
         StringBuilder sb = new StringBuilder();
-        sb.append("AI Itinerary for ").append(destination).append("\n");
-        sb.append("Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n\n");
+        sb.append("Suggested Destination: ").append(destination).append("\n");
+        sb.append("Based on Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n\n");
+        sb.append("--- ITINERARY ---\n\n");
 
         if (destination.equals("Hunza Valley")) {
             sb.append("Day 1: Arrival in Gilgit, drive to Hunza.\n");
@@ -129,6 +113,12 @@ public class AiPlannerActivity extends AppCompatActivity {
             sb.append("Day 3: Rafting in Kunhar River.\n");
             sb.append("Day 4: Visit Babusar Top and Lulusar Lake.\n");
             sb.append("Day 5: Breakfast and return journey.");
+        }
+
+        if (days > 7 && destination.equals("Hunza Valley")) {
+             sb.append("\n\n* You have extra days! Consider visiting Naltar Valley or exploring Hopper Glacier.");
+        } else if (days > 5 && destination.equals("Naran & Kaghan")) {
+             sb.append("\n\n* You have extra days! Consider visiting Shogran and Siri Paye Meadows.");
         }
 
         return sb.toString();
