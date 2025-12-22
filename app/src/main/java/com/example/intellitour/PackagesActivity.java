@@ -1,8 +1,11 @@
 package com.example.intellitour;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PackagesActivity extends AppCompatActivity {
@@ -12,11 +15,33 @@ public class PackagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_packages);
 
-        // In a real app, you would set OnClickListeners for the "Book Now" buttons here
-        // to navigate to a booking screen or process a payment.
-        
-        // Example for one button (assuming you give IDs to buttons in XML later for logic):
-        // Button btnBookParis = findViewById(R.id.btn_book_paris);
-        // btnBookParis.setOnClickListener(v -> Toast.makeText(this, "Booking feature coming soon!", Toast.LENGTH_SHORT).show());
+        Button btnBookHunza = findViewById(R.id.btn_book_hunza);
+        Button btnBookSkardu = findViewById(R.id.btn_book_skardu);
+        Button btnBookNaran = findViewById(R.id.btn_book_naran);
+
+        btnBookHunza.setOnClickListener(v -> showBookingDialog("Hunza Valley Exploration", "Rs. 75,000"));
+        btnBookSkardu.setOnClickListener(v -> showBookingDialog("Skardu & Deosai Plains", "Rs. 95,000"));
+        btnBookNaran.setOnClickListener(v -> showBookingDialog("Naran & Kaghan Valley Tour", "Rs. 50,000"));
+    }
+
+    private void showBookingDialog(String packageName, String price) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Booking")
+                .setMessage("Do you want to book the " + packageName + " package for " + price + "?")
+                .setPositiveButton("Confirm", (dialog, which) -> {
+                    // Logic for booking confirmation (e.g., save to Firebase)
+                    showSuccessDialog();
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void showSuccessDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Booking Successful!")
+                .setMessage("Your trip has been booked successfully. Our team will contact you shortly.")
+                .setPositiveButton("OK", null)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
     }
 }
