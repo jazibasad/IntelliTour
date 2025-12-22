@@ -1,6 +1,7 @@
 package com.example.intellitour;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,9 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    // Using a different API key for testing. 
-    // Please replace this with your own key from openweathermap.org/api eventually.
-    private static final String API_KEY = "e98e2740445a4944d8c6b306b3f7902d"; 
+    // Try this alternative key. If this fails, you MUST sign up at openweathermap.org for your own key.
+    private static final String API_KEY = "4a1d13f9824f4679782489679f65874c"; 
     private static final String BASE_URL = "https://api.openweathermap.org/";
 
     @Override
@@ -70,8 +70,9 @@ public class WeatherActivity extends AppCompatActivity {
                     tvResult.setText(resultText);
                 } else {
                     // Show specific error code to help debug
+                    Log.e("WeatherApp", "Error Code: " + response.code());
                     if (response.code() == 401) {
-                        tvResult.setText("Error 401: Invalid API Key. Please check your API key.");
+                        tvResult.setText("Error 401: API Key Blocked/Invalid. Please create a new FREE key at openweathermap.org.");
                     } else if (response.code() == 404) {
                         tvResult.setText("Error 404: City '" + city + "' not found.");
                     } else {
@@ -83,6 +84,7 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<WeatherResponse> call, Throwable t) {
                 tvResult.setText("Network Error: " + t.getMessage());
+                Log.e("WeatherApp", "Network Error", t);
             }
         });
     }
