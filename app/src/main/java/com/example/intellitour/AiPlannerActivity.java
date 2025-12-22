@@ -21,6 +21,8 @@ public class AiPlannerActivity extends AppCompatActivity {
     static {
         // Destination Name -> {Price, Days}
         PACKAGES.put("Naran & Kaghan", new int[]{50000, 5});
+        PACKAGES.put("Kashmir Neelum Valley", new int[]{55000, 5});
+        PACKAGES.put("Gilgit Adventure", new int[]{60000, 6});
         PACKAGES.put("Hunza Valley", new int[]{75000, 7});
         PACKAGES.put("Skardu & Deosai", new int[]{95000, 8});
     }
@@ -113,6 +115,19 @@ public class AiPlannerActivity extends AppCompatActivity {
             sb.append("Day 3: Rafting in Kunhar River.\n");
             sb.append("Day 4: Visit Babusar Top and Lulusar Lake.\n");
             sb.append("Day 5: Breakfast and return journey.");
+        } else if (destination.equals("Gilgit Adventure")) {
+            sb.append("Day 1: Arrival in Gilgit. Visit City Park.\n");
+            sb.append("Day 2: Drive to Naltar Valley. Visit Blue Lake.\n");
+            sb.append("Day 3: Ski resort visit (if winter) or hiking in Naltar.\n");
+            sb.append("Day 4: Visit Kargah Buddha rock carving.\n");
+            sb.append("Day 5: Explore Danyore Suspension Bridge.\n");
+            sb.append("Day 6: Shopping for dry fruits & Departure.");
+        } else if (destination.equals("Kashmir Neelum Valley")) {
+            sb.append("Day 1: Drive to Muzaffarabad, then Kutton.\n");
+            sb.append("Day 2: Visit Keran and Upper Neelum.\n");
+            sb.append("Day 3: Drive to Sharda. Visit Sharda Peeth.\n");
+            sb.append("Day 4: Jeep trek to Kel and Arang Kel.\n");
+            sb.append("Day 5: Return journey to Islamabad.");
         }
 
         if (days > 7 && destination.equals("Hunza Valley")) {
