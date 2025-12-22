@@ -1,8 +1,6 @@
 package com.example.intellitour;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,10 +16,14 @@ public class PackagesActivity extends AppCompatActivity {
         Button btnBookHunza = findViewById(R.id.btn_book_hunza);
         Button btnBookSkardu = findViewById(R.id.btn_book_skardu);
         Button btnBookNaran = findViewById(R.id.btn_book_naran);
+        Button btnBookGilgit = findViewById(R.id.btn_book_gilgit);
+        Button btnBookKashmir = findViewById(R.id.btn_book_kashmir);
 
         btnBookHunza.setOnClickListener(v -> showBookingDialog("Hunza Valley Exploration", "Rs. 75,000"));
         btnBookSkardu.setOnClickListener(v -> showBookingDialog("Skardu & Deosai Plains", "Rs. 95,000"));
         btnBookNaran.setOnClickListener(v -> showBookingDialog("Naran & Kaghan Valley Tour", "Rs. 50,000"));
+        btnBookGilgit.setOnClickListener(v -> showBookingDialog("Gilgit Adventure", "Rs. 60,000"));
+        btnBookKashmir.setOnClickListener(v -> showBookingDialog("Kashmir Neelum Valley", "Rs. 55,000"));
     }
 
     private void showBookingDialog(String packageName, String price) {
