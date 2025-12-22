@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.example.intellitour'
-    compileSdk 35 // Updated to resolve dependency requirements
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.example.intellitour"
         minSdk 24
-        targetSdk 35 // Updating targetSdk as well to match compileSdk (recommended)
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
