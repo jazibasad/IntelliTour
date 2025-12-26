@@ -28,7 +28,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private MapLibreMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     // TODO: Replace with your actual Geoapify API Key
-    private static final String GEOAPIFY_API_KEY = "YOUR_GEOAPIFY_API_KEY_HERE";
+    private static final String GEOAPIFY_API_KEY = "8d377dc7366f4b4da7efe5a9db90ef42";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
