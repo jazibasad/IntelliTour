@@ -41,8 +41,8 @@ dependencies {
     // Image Loading
     implementation libs.glide
 
-    // Google Maps & Location
-    implementation libs.play.services.maps
+    // MapLibre SDK for Geoapify
+    implementation libs.maplibre.android.sdk
     implementation libs.play.services.location
 
     testImplementation libs.junit
