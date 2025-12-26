@@ -17,16 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IntelliTour">
 
-        <!-- Login Activity (New Launcher) -->
+        <!-- Splash Activity (New Launcher) -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.IntelliTour.NoActionBar"> <!-- Optional: No action bar for login screen -->
+            android:theme="@style/Theme.IntelliTour.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.IntelliTour.NoActionBar"/>
 
         <!-- Signup Activity -->
         <activity
@@ -34,7 +40,7 @@
             android:exported="false"
             android:parentActivityName=".LoginActivity"/>
 
-        <!-- Main Activity (No longer the launcher) -->
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="false"/>
