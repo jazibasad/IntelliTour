@@ -34,13 +34,25 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
-            // Mock Signup Logic (Replace with Firebase later)
             SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            
+            // Check if user already exists
+            if (prefs.contains("password_" + email)) {
+                Toast.makeText(this, "User with this email already exists!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("name", name);
-            editor.putString("email", email);
-            editor.putString("password", password);
-            editor.putBoolean("isLoggedIn", true); // Login immediately after signup
+            
+            // Save data keyed by email so we can have multiple users
+            // Key format: "field_emailaddress"
+            editor.putString("name_" + email, name);
+            editor.putString("password_" + email, password);
+            
+            // Set this specific user as the currently logged in user
+            editor.putBoolean("isLoggedIn", true);
+            editor.putString("currentUserEmail", email);
+            
             editor.apply();
 
             Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
