@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AiPlannerActivity extends AppCompatActivity {
 
@@ -20,9 +18,14 @@ public class AiPlannerActivity extends AppCompatActivity {
 
     static {
         // Destination Name -> {Price, Days}
+        PACKAGES.put("Murree & Galiyat", new int[]{25000, 3});
+        PACKAGES.put("Gwadar Beach & Ormara", new int[]{40000, 4});
+        PACKAGES.put("Swat Valley (Switzerland of East)", new int[]{45000, 5});
         PACKAGES.put("Naran & Kaghan", new int[]{50000, 5});
+        PACKAGES.put("Fairy Meadows Trek", new int[]{50000, 5});
         PACKAGES.put("Kashmir Neelum Valley", new int[]{55000, 5});
         PACKAGES.put("Gilgit Adventure", new int[]{60000, 6});
+        PACKAGES.put("Chitral & Kalash Valley", new int[]{65000, 6});
         PACKAGES.put("Hunza Valley", new int[]{75000, 7});
         PACKAGES.put("Skardu & Deosai", new int[]{95000, 8});
     }
@@ -55,7 +58,7 @@ public class AiPlannerActivity extends AppCompatActivity {
             if (bestPackage == null) {
                 tvResult.setText("Sorry, no packages match your criteria.\n" +
                         "Try increasing your budget or changing duration.\n\n" +
-                        "Available options start from Rs. 50,000 for 5 days.");
+                        "Packages start from Rs. 25,000 for 3 days (Murree).");
                 return;
             }
 
@@ -70,7 +73,7 @@ public class AiPlannerActivity extends AppCompatActivity {
         int maxPriceFound = -1;
 
         // Iterate through all packages to find one that fits budget and days
-        // We pick the most expensive one within budget to maximize value (or you can pick cheapest)
+        // We pick the most expensive one within budget to maximize value
         for (Map.Entry<String, int[]> entry : PACKAGES.entrySet()) {
             String pkgName = entry.getKey();
             int price = entry.getValue()[0];
@@ -128,6 +131,34 @@ public class AiPlannerActivity extends AppCompatActivity {
             sb.append("Day 3: Drive to Sharda. Visit Sharda Peeth.\n");
             sb.append("Day 4: Jeep trek to Kel and Arang Kel.\n");
             sb.append("Day 5: Return journey to Islamabad.");
+        } else if (destination.equals("Swat Valley (Switzerland of East)")) {
+            sb.append("Day 1: Drive to Mingora/Saidu Sharif.\n");
+            sb.append("Day 2: Visit Malam Jabba Ski Resort.\n");
+            sb.append("Day 3: Drive to Kalam Valley.\n");
+            sb.append("Day 4: Jeep ride to Mahodand Lake.\n");
+            sb.append("Day 5: Visit White Palace & Departure.");
+        } else if (destination.equals("Fairy Meadows Trek")) {
+            sb.append("Day 1: Drive to Raikot Bridge.\n");
+            sb.append("Day 2: Jeep to Tattu, Trek to Fairy Meadows.\n");
+            sb.append("Day 3: Full day at Fairy Meadows with Nanga Parbat view.\n");
+            sb.append("Day 4: Hike towards Beyal Camp (optional).\n");
+            sb.append("Day 5: Trek down and return journey.");
+        } else if (destination.equals("Chitral & Kalash Valley")) {
+            sb.append("Day 1: Drive to Chitral via Lowari Tunnel.\n");
+            sb.append("Day 2: Visit Chitral Fort and Shahi Mosque.\n");
+            sb.append("Day 3: Drive to Kalash Valley (Bumburet).\n");
+            sb.append("Day 4: Explore Kalash culture and museum.\n");
+            sb.append("Day 5: Visit Rumbur Valley.\n");
+            sb.append("Day 6: Return drive to Islamabad.");
+        } else if (destination.equals("Murree & Galiyat")) {
+            sb.append("Day 1: Drive to Murree. Walk on Mall Road.\n");
+            sb.append("Day 2: Day trip to Nathia Gali & Ayubia.\n");
+            sb.append("Day 3: Chairlift at Patriata & Departure.");
+        } else if (destination.equals("Gwadar Beach & Ormara")) {
+            sb.append("Day 1: Drive from Karachi to Ormara via Coastal Highway.\n");
+            sb.append("Day 2: Drive to Gwadar. Visit Princess of Hope.\n");
+            sb.append("Day 3: Gwadar Port, Hammerhead, and Sunset point.\n");
+            sb.append("Day 4: Return journey via Kund Malir Beach.");
         }
 
         if (days > 7 && destination.equals("Hunza Valley")) {
