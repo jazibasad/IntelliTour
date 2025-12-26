@@ -42,19 +42,21 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Mock Login Logic (Replace with Firebase later)
-            // Retrieve stored user data
-            String storedEmail = prefs.getString("email", "");
-            String storedPassword = prefs.getString("password", "");
+            // Retrieve stored password for this specific email
+            String storedPassword = prefs.getString("password_" + email, null);
 
-            if (email.equals(storedEmail) && password.equals(storedPassword)) {
+            if (storedPassword != null && storedPassword.equals(password)) {
                 // Login Success
-                prefs.edit().putBoolean("isLoggedIn", true).apply();
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("isLoggedIn", true);
+                editor.putString("currentUserEmail", email);
+                editor.apply();
+
                 Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
             } else {
-                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
             }
         });
 
