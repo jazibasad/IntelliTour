@@ -10,51 +10,80 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import org.maplibre.android.MapLibre;
+import org.maplibre.android.camera.CameraUpdateFactory;
+import org.maplibre.android.geometry.LatLng;
+import org.maplibre.android.location.LocationComponent;
+import org.maplibre.android.location.LocationComponentActivationOptions;
+import org.maplibre.android.location.modes.CameraMode;
+import org.maplibre.android.location.modes.RenderMode;
+import org.maplibre.android.maps.MapLibreMap;
+import org.maplibre.android.maps.MapView;
+import org.maplibre.android.maps.OnMapReadyCallback;
+import org.maplibre.android.maps.Style;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    private MapView mMapView;
+    private MapLibreMap mMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    // TODO: Replace with your actual Geoapify API Key
+    private static final String GEOAPIFY_API_KEY = "YOUR_GEOAPIFY_API_KEY_HERE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize MapLibre
+        MapLibre.getInstance(this);
+
         setContentView(R.layout.activity_map);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
+        mMapView = findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
+        mMapView.getMapAsync(this);
     }
 
     @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onMapReady(@NonNull MapLibreMap mapLibreMap) {
+        mMap = mapLibreMap;
 
-        // Add a marker in a default location (e.g., Islamabad) and move the camera
-        LatLng islamabad = new LatLng(33.6844, 73.0479);
-        mMap.addMarker(new MarkerOptions().position(islamabad).title("Marker in Islamabad"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(islamabad, 10));
+        // Set style using Geoapify URL
+        // Style can be: osm-carto, osm-bright, osm-liberty, maptiler-3d-gl-style, etc.
+        // See https://apidocs.geoapify.com/docs/maps/map-tiles/
+        String styleUrl = "https://maps.geoapify.com/v1/styles/osm-bright/style.json?apiKey=" + GEOAPIFY_API_KEY;
 
-        enableMyLocation();
+        mMap.setStyle(new Style.Builder().fromUri(styleUrl), style -> {
+            // Style loaded successfully
+
+            // Default location: Islamabad
+            LatLng islamabad = new LatLng(33.6844, 73.0479);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(islamabad, 10));
+
+            enableMyLocation(style);
+        });
     }
 
-    private void enableMyLocation() {
+    private void enableMyLocation(@NonNull Style loadedMapStyle) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            if (mMap != null) {
-                mMap.setMyLocationEnabled(true);
-            }
+            
+            // Get an instance of the component
+            LocationComponent locationComponent = mMap.getLocationComponent();
+
+            // Activate with options
+            locationComponent.activateLocationComponent(
+                    LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
+
+            // Enable to make component visible
+            locationComponent.setLocationComponentEnabled(true);
+
+            // Set the component's camera mode
+            locationComponent.setCameraMode(CameraMode.TRACKING);
+
+            // Set the component's render mode
+            locationComponent.setRenderMode(RenderMode.COMPASS);
         } else {
-            // Permission to access the location is missing. Show rationale and request permission
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     LOCATION_PERMISSION_REQUEST_CODE);
@@ -66,10 +95,52 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                enableMyLocation();
+                mMap.getStyle(this::enableMyLocation);
             } else {
-                Toast.makeText(this, "Location permission denied. Current location feature disabled.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Location permission denied.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mMapView.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
     }
 }
