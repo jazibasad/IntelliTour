@@ -24,168 +24,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Discover the beauty of Pakistan's northern areas."
+            android:text="Explore even more destinations."
             android:textSize="16sp"
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="24dp"/>
 
-        <!-- Package 1: Hunza Valley -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:scaleType="centerCrop"
-                    android:src="@color/colorAccent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hunza Valley Exploration"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7 Days / 6 Nights"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Discover the breathtaking beauty of Hunza Valley, from Karimabad to Attabad Lake."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Rs. 75,000"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorAccent"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_book_hunza"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Book Now"
-                            android:backgroundTint="@color/colorAccent"
-                            app:cornerRadius="8dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Package 2: Skardu -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:scaleType="centerCrop"
-                    android:src="@color/colorPrimary"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Skardu &amp; Deosai Plains"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="8 Days / 7 Nights"
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="An adventurous journey to the land of giants. Explore Skardu, Shangrila, and the vast Deosai National Park."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Rs. 95,000"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorAccent"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_book_skardu"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Book Now"
-                            android:backgroundTint="@color/colorAccent"
-                            app:cornerRadius="8dp"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-        
-        <!-- Package 3: Naran & Kaghan -->
+        <!-- Package 6: Swat -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -214,7 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Naran &amp; Kaghan Valley Tour"
+                        android:text="Swat Valley (Switzerland of East)"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -231,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Visit the stunning Saif-ul-Malook lake, Babusar Top, and the lush green valleys of Naran and Kaghan."
+                        android:text="Explore Kalam, Malam Jabba, and the beautiful Mahodand Lake."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginBottom="16dp"/>
@@ -246,13 +90,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Rs. 50,000"
+                            android:text="Rs. 45,000"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_book_naran"
+                            android:id="@+id/btn_book_swat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Book Now"
@@ -263,7 +107,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Package 4: Gilgit -->
+        <!-- Package 7: Fairy Meadows -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -292,7 +136,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gilgit Adventure"
+                        android:text="Fairy Meadows Trek"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -301,7 +145,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6 Days / 5 Nights"
+                        android:text="5 Days / 4 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginBottom="8dp"/>
@@ -309,7 +153,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Experience the rich culture of Gilgit, visit Naltar Valley, and explore ancient Buddhist rock carvings."
+                        android:text="Adventure trek to the base of Nanga Parbat. Camping under the stars."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginBottom="16dp"/>
@@ -324,13 +168,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Rs. 60,000"
+                            android:text="Rs. 50,000"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_book_gilgit"
+                            android:id="@+id/btn_book_fairy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Book Now"
@@ -341,7 +185,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Package 5: Kashmir -->
+        <!-- Package 8: Chitral -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -370,7 +214,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kashmir Neelum Valley"
+                        android:text="Chitral &amp; Kalash Valley"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/text_primary"
@@ -379,7 +223,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5 Days / 4 Nights"
+                        android:text="6 Days / 5 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginBottom="8dp"/>
@@ -387,7 +231,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Paradise on Earth. Visit Arang Kel, Sharda Peeth, and the mesmerizing Ratti Gali Lake."
+                        android:text="Immerse yourself in the unique culture of the Kalash people and breathtaking landscapes."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
                         android:layout_marginBottom="16dp"/>
@@ -402,13 +246,169 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Rs. 55,000"
+                            android:text="Rs. 65,000"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_book_kashmir"
+                            android:id="@+id/btn_book_chitral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Book Now"
+                            android:backgroundTint="@color/colorAccent"
+                            app:cornerRadius="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Package 9: Murree -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorPrimaryDark"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Murree &amp; Galiyat"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 Days / 2 Nights"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A quick escape to the Queen of Hills. Visit Mall Road, Patriata, and Nathia Gali."
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Rs. 25,000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorAccent"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_book_murree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Book Now"
+                            android:backgroundTint="@color/colorAccent"
+                            app:cornerRadius="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Package 10: Gwadar -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorAccent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gwadar Beach &amp; Ormara"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 Days / 3 Nights"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Enjoy the pristine beaches of Gwadar, the Sphinx, and the scenic Coastal Highway."
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginBottom="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Rs. 40,000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorAccent"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_book_gwadar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Book Now"
@@ -420,10 +420,10 @@
         </com.google.android.material.card.MaterialCardView>
         
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next_page"
+            android:id="@+id/btn_prev_page"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Next Page"
+            android:text="Previous Page"
             android:textSize="18sp"
             android:backgroundTint="@color/colorPrimary"
             app:cornerRadius="8dp"
