@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Brand Colors (Teal Palette) -->
-    <color name="colorPrimary">#00796B</color> <!-- A deep, modern teal -->
-    <color name="colorPrimaryDark">#004D40</color> <!-- A darker shade for the status bar -->
-    <color name="colorAccent">#FF6F61</color> <!-- A vibrant coral for buttons and highlights -->
+    <!-- Primary Brand Colors (Navy and Gold Palette) -->
+    <color name="colorPrimary">#0D253F</color> <!-- Deep Navy Blue -->
+    <color name="colorPrimaryDark">#011123</color> <!-- Darker Navy for Status Bar -->
+    <color name="colorAccent">#FFC107</color> <!-- Vibrant Gold/Amber -->
 
     <!-- Standard Colors -->
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     
     <!-- UI Element Colors -->
-    <color name="window_background">#F5F5F5</color> <!-- A clean, light gray -->
+    <color name="window_background">#F8F9FA</color> <!-- Soft, clean off-white -->
     <color name="card_background">#FFFFFF</color>
-    <color name="text_primary">#212121</color> <!-- For titles and important text -->
-    <color name="text_secondary">#757575</color> <!-- For subtitles and body text -->
-    <color name="icon_tint">#9E9E9E</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#616161</color> <!-- Slightly darker for better contrast -->
+    <color name="icon_tint">#BDBDBD</color>
 </resources>

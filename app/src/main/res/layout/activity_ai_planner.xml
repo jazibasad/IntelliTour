@@ -9,25 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Plan Your Trip with AI"
-            android:textSize="28sp"
+            android:text="AI Trip Planner"
+            android:textSize="26sp"
             android:fontFamily="sans-serif-medium"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/colorPrimary"
             android:layout_marginBottom="8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your budget and days, and we'll suggest the best trip for you."
+            android:text="Let our AI find the perfect trip for your budget."
             android:textSize="16sp"
             android:textColor="@color/text_secondary"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="40dp"/>
 
         <!-- Budget Input -->
         <com.google.android.material.textfield.TextInputLayout
@@ -36,8 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Budget (Rs)"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="20dp"
             app:startIconDrawable="@android:drawable/ic_menu_manage"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimary"
             app:startIconTint="@color/icon_tint">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,8 +56,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Number of Days"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             app:startIconDrawable="@android:drawable/ic_menu_today"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimary"
             app:startIconTint="@color/icon_tint">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -69,39 +73,40 @@
             android:id="@+id/btn_generate_itinerary"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Suggest Trip &amp; Generate Itinerary"
+            android:text="Suggest My Trip"
             android:textSize="18sp"
             android:backgroundTint="@color/colorAccent"
             app:cornerRadius="8dp"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="40dp"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your Itinerary"
+                    android:text="Your Suggested Itinerary"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginBottom="12dp"/>
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="16dp"/>
 
                 <TextView
                     android:id="@+id/tv_result"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Your personalized travel plan will appear here..."
+                    android:text="Your personalized plan will appear here..."
                     android:textSize="16sp"
+                    android:lineSpacingExtra="4dp"
                     android:textColor="@color/text_secondary"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
