@@ -74,6 +74,11 @@
             android:name=".PackagesActivity2"
             android:exported="false"
             android:parentActivityName=".PackagesActivity"/>
+        
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:parentActivityName=".PackagesActivity"/>
 
     </application>
 

@@ -35,20 +35,14 @@ public class PackagesActivity2 extends AppCompatActivity {
     private void showBookingDialog(String packageName, String price) {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Booking")
-                .setMessage("Do you want to book the " + packageName + " package for " + price + "?")
-                .setPositiveButton("Confirm", (dialog, which) -> {
-                    showSuccessDialog();
+                .setMessage("Do you want to proceed to payment for the " + packageName + " package?")
+                .setPositiveButton("Proceed", (dialog, which) -> {
+                    Intent intent = new Intent(PackagesActivity2.this, PaymentActivity.class);
+                    intent.putExtra("PACKAGE_NAME", packageName);
+                    intent.putExtra("PACKAGE_PRICE", price);
+                    startActivity(intent);
                 })
                 .setNegativeButton("Cancel", null)
-                .show();
-    }
-
-    private void showSuccessDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle("Booking Successful!")
-                .setMessage("Your trip has been booked successfully. Our team will contact you shortly.")
-                .setPositiveButton("OK", null)
-                .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
 }
