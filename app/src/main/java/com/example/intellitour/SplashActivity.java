@@ -1,6 +1,7 @@
 package com.example.intellitour;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,9 +40,19 @@ public class SplashActivity extends AppCompatActivity {
                 .setDuration(1000)
                 .start();
 
-        // Navigate to LoginActivity after 3 seconds total
+        // Navigate after 3 seconds total
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+
+            Intent intent;
+            if (isLoggedIn) {
+                // If logged in, go to MainActivity
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+            } else {
+                // If not logged in, go to LoginActivity
+                intent = new Intent(SplashActivity.this, LoginActivity.class);
+            }
             startActivity(intent);
             finish();
         }, 3000);
