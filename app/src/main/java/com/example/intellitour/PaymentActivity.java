@@ -3,12 +3,18 @@ package com.example.intellitour;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -41,19 +47,44 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 
-    private void showPaymentDialog(String method, String details, String amount) {
-        String message = "Please transfer " + amount + " to the following " + method + " account and press 'Done'.\n\n" +
-                         "Account: " + details + "\n\n" +
-                         "(This is a simulation. No real payment will be made.)";
+    private void showPaymentDialog(String method, String details, String requiredAmount) {
+        // Inflate the custom layout
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_payment_input, null);
+        TextView tvPaymentDetails = dialogView.findViewById(R.id.tv_payment_details);
+        TextInputEditText etAmount = dialogView.findViewById(R.id.et_payment_amount);
 
-        new AlertDialog.Builder(this)
-                .setTitle(method + " Details")
-                .setMessage(message)
-                .setPositiveButton("Done", (dialog, which) -> {
-                    showSuccessDialog();
-                })
+        // Set the details in the dialog
+        String detailsText = "Please transfer " + requiredAmount + " to the following " + method + " account:\n\nAccount: " + details;
+        tvPaymentDetails.setText(detailsText);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Enter Payment Details")
+                .setView(dialogView)
+                .setPositiveButton("Confirm Payment", null) // Set to null to override and prevent auto-closing
                 .setNegativeButton("Cancel", null)
-                .show();
+                .create();
+
+        dialog.setOnShowListener(dialogInterface -> {
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(v -> {
+                String enteredAmount = etAmount.getText().toString().trim();
+                String cleanRequiredAmount = requiredAmount.replaceAll("[^\\d]", ""); // Remove "Rs. " and commas
+
+                if (enteredAmount.isEmpty()) {
+                    Toast.makeText(this, "Please enter the amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (enteredAmount.equals(cleanRequiredAmount)) {
+                    dialog.dismiss();
+                    showSuccessDialog();
+                } else {
+                    Toast.makeText(this, "Incorrect amount. Please enter exactly " + requiredAmount, Toast.LENGTH_LONG).show();
+                }
+            });
+        });
+
+        dialog.show();
     }
 
     private void showSuccessDialog() {
