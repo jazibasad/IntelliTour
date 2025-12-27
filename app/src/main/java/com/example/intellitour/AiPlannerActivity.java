@@ -13,21 +13,21 @@ import java.util.Map;
 
 public class AiPlannerActivity extends AppCompatActivity {
 
-    // Define the valid packages with their details (Name -> [Min Budget, Min Days])
-    private static final Map<String, int[]> PACKAGES = new HashMap<>();
+    // Define the valid packages with their details (Name -> [Min Budget, Min Days, Hotel])
+    private static final Map<String, Object[]> PACKAGES = new HashMap<>();
 
     static {
-        // Destination Name -> {Price, Days}
-        PACKAGES.put("Murree & Galiyat", new int[]{25000, 3});
-        PACKAGES.put("Gwadar Beach & Ormara", new int[]{40000, 4});
-        PACKAGES.put("Swat Valley (Switzerland of East)", new int[]{45000, 5});
-        PACKAGES.put("Naran & Kaghan", new int[]{50000, 5});
-        PACKAGES.put("Fairy Meadows Trek", new int[]{50000, 5});
-        PACKAGES.put("Kashmir Neelum Valley", new int[]{55000, 5});
-        PACKAGES.put("Gilgit Adventure", new int[]{60000, 6});
-        PACKAGES.put("Chitral & Kalash Valley", new int[]{65000, 6});
-        PACKAGES.put("Hunza Valley", new int[]{75000, 7});
-        PACKAGES.put("Skardu & Deosai", new int[]{95000, 8});
+        // Destination Name -> {Price, Days, Hotel Name}
+        PACKAGES.put("Murree & Galiyat", new Object[]{25000, 3, "Pearl Continental, Bhurban"});
+        PACKAGES.put("Gwadar Beach & Ormara", new Object[]{40000, 4, "Zaver Pearl Continental Hotel"});
+        PACKAGES.put("Swat Valley (Switzerland of East)", new Object[]{45000, 5, "Swat Serena Hotel"});
+        PACKAGES.put("Naran & Kaghan", new Object[]{50000, 5, "PTDC Motel Naran"});
+        PACKAGES.put("Fairy Meadows Trek", new Object[]{50000, 5, "Fairy Meadows Cottages"});
+        PACKAGES.put("Kashmir Neelum Valley", new Object[]{55000, 5, "Pearl Continental, Muzaffarabad"});
+        PACKAGES.put("Gilgit Adventure", new Object[]{60000, 6, "Gilgit Serena Hotel"});
+        PACKAGES.put("Chitral & Kalash Valley", new Object[]{65000, 6, "Hindukush Heights"});
+        PACKAGES.put("Hunza Valley", new Object[]{75000, 7, "Hunza Serena Inn"});
+        PACKAGES.put("Skardu & Deosai", new Object[]{95000, 8, "Serena Shigar Fort"});
     }
 
     @Override
@@ -52,7 +52,6 @@ public class AiPlannerActivity extends AppCompatActivity {
             int budget = Integer.parseInt(budgetInput);
             int days = Integer.parseInt(daysInput);
 
-            // Find best matching package
             String bestPackage = suggestPackage(budget, days);
 
             if (bestPackage == null) {
@@ -62,7 +61,6 @@ public class AiPlannerActivity extends AppCompatActivity {
                 return;
             }
 
-            // Generate itinerary for the suggested package
             String itinerary = generateItinerary(bestPackage, days, budget);
             tvResult.setText(itinerary);
         });
@@ -72,12 +70,10 @@ public class AiPlannerActivity extends AppCompatActivity {
         String bestMatch = null;
         int maxPriceFound = -1;
 
-        // Iterate through all packages to find one that fits budget and days
-        // We pick the most expensive one within budget to maximize value
-        for (Map.Entry<String, int[]> entry : PACKAGES.entrySet()) {
+        for (Map.Entry<String, Object[]> entry : PACKAGES.entrySet()) {
             String pkgName = entry.getKey();
-            int price = entry.getValue()[0];
-            int duration = entry.getValue()[1];
+            int price = (int) entry.getValue()[0];
+            int duration = (int) entry.getValue()[1];
 
             if (budget >= price && days >= duration) {
                 if (price > maxPriceFound) {
@@ -90,9 +86,13 @@ public class AiPlannerActivity extends AppCompatActivity {
     }
 
     private String generateItinerary(String destination, int days, int budget) {
+        Object[] packageDetails = PACKAGES.get(destination);
+        String hotel = (String) packageDetails[2];
+
         StringBuilder sb = new StringBuilder();
         sb.append("Suggested Destination: ").append(destination).append("\n");
-        sb.append("Based on Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n\n");
+        sb.append("Based on Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n");
+        sb.append("Recommended Hotel: ").append(hotel).append("\n\n");
         sb.append("--- ITINERARY ---\n\n");
 
         if (destination.equals("Hunza Valley")) {
@@ -159,12 +159,6 @@ public class AiPlannerActivity extends AppCompatActivity {
             sb.append("Day 2: Drive to Gwadar. Visit Princess of Hope.\n");
             sb.append("Day 3: Gwadar Port, Hammerhead, and Sunset point.\n");
             sb.append("Day 4: Return journey via Kund Malir Beach.");
-        }
-
-        if (days > 7 && destination.equals("Hunza Valley")) {
-             sb.append("\n\n* You have extra days! Consider visiting Naltar Valley or exploring Hopper Glacier.");
-        } else if (days > 5 && destination.equals("Naran & Kaghan")) {
-             sb.append("\n\n* You have extra days! Consider visiting Shogran and Siri Paye Meadows.");
         }
 
         return sb.toString();

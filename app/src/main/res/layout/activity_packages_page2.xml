@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/window_background">
 
     <LinearLayout
@@ -14,11 +15,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Explore Pakistan"
+            android:text="More Packages (Page 2)"
             android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
             android:textStyle="bold"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/colorPrimary"
             android:layout_marginBottom="8dp"/>
 
         <TextView
@@ -78,7 +79,18 @@
                         android:text="Explore Kalam, Malam Jabba, and the beautiful Mahodand Lake."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="12dp"/>
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stay at: Swat Serena Hotel"
+                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"
+                        app:drawableTint="@color/colorAccent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -156,7 +168,18 @@
                         android:text="Adventure trek to the base of Nanga Parbat. Camping under the stars."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="12dp"/>
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stay at: Fairy Meadows Cottages"
+                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"
+                        app:drawableTint="@color/colorAccent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -234,7 +257,18 @@
                         android:text="Immerse yourself in the unique culture of the Kalash people and breathtaking landscapes."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="12dp"/>
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stay at: Hindukush Heights"
+                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"
+                        app:drawableTint="@color/colorAccent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -312,7 +346,18 @@
                         android:text="A quick escape to the Queen of Hills. Visit Mall Road, Patriata, and Nathia Gali."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="12dp"/>
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stay at: Pearl Continental, Bhurban"
+                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"
+                        app:drawableTint="@color/colorAccent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -390,7 +435,18 @@
                         android:text="Enjoy the pristine beaches of Gwadar, the Sphinx, and the scenic Coastal Highway."
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_marginBottom="12dp"/>
+                        
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stay at: Zaver Pearl Continental Hotel"
+                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"
+                        app:drawableTint="@color/colorAccent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
