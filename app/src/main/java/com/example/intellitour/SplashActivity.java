@@ -1,7 +1,9 @@
 package com.example.intellitour;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,10 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
+    public static final String CHANNEL_ID = "IntelliTourChannel";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        createNotificationChannel();
 
         ImageView logo = findViewById(R.id.logo_image);
         TextView appName = findViewById(R.id.app_name_text);
@@ -41,15 +47,24 @@ public class SplashActivity extends AppCompatActivity {
         appName.animate().alpha(1f).translationY(0f).setDuration(1000).setStartDelay(500).setInterpolator(new DecelerateInterpolator()).start();
         appTagline.animate().alpha(1f).setDuration(1000).setStartDelay(1000).start();
 
-        // Navigate to next activity after delay
+        // Navigate to LoginActivity after delay. LoginActivity will handle the auth check.
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
-
-            Intent intent = isLoggedIn ? new Intent(SplashActivity.this, MainActivity.class) :
-                                         new Intent(SplashActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }, 3000); // Total splash screen duration
+        }, 3000);
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "IntelliTour Channel";
+            String description = "Channel for IntelliTour notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
