@@ -1,11 +1,19 @@
 package com.example.intellitour;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
@@ -13,21 +21,21 @@ import java.util.Map;
 
 public class AiPlannerActivity extends AppCompatActivity {
 
-    // Define the valid packages with their details (Name -> [Min Budget, Min Days, Hotel])
+    // Define the valid packages with their details (Name -> [Min Budget, Min Days, Hotel, Wiki URL])
     private static final Map<String, Object[]> PACKAGES = new HashMap<>();
 
     static {
-        // Destination Name -> {Price, Days, Hotel Name}
-        PACKAGES.put("Murree & Galiyat", new Object[]{25000, 3, "Pearl Continental, Bhurban"});
-        PACKAGES.put("Gwadar Beach & Ormara", new Object[]{40000, 4, "Zaver Pearl Continental Hotel"});
-        PACKAGES.put("Swat Valley (Switzerland of East)", new Object[]{45000, 5, "Swat Serena Hotel"});
-        PACKAGES.put("Naran & Kaghan", new Object[]{50000, 5, "PTDC Motel Naran"});
-        PACKAGES.put("Fairy Meadows Trek", new Object[]{50000, 5, "Fairy Meadows Cottages"});
-        PACKAGES.put("Kashmir Neelum Valley", new Object[]{55000, 5, "Pearl Continental, Muzaffarabad"});
-        PACKAGES.put("Gilgit Adventure", new Object[]{60000, 6, "Gilgit Serena Hotel"});
-        PACKAGES.put("Chitral & Kalash Valley", new Object[]{65000, 6, "Hindukush Heights"});
-        PACKAGES.put("Hunza Valley", new Object[]{75000, 7, "Hunza Serena Inn"});
-        PACKAGES.put("Skardu & Deosai", new Object[]{95000, 8, "Serena Shigar Fort"});
+        // Destination Name -> {Price, Days, Hotel Name, Wiki URL}
+        PACKAGES.put("Murree & Galiyat", new Object[]{25000, 3, "Pearl Continental, Bhurban", "https://en.wikipedia.org/wiki/Murree"});
+        PACKAGES.put("Gwadar Beach & Ormara", new Object[]{40000, 4, "Zaver Pearl Continental Hotel", "https://en.wikipedia.org/wiki/Gwadar"});
+        PACKAGES.put("Swat Valley (Switzerland of East)", new Object[]{45000, 5, "Swat Serena Hotel", "https://en.wikipedia.org/wiki/Swat_District"});
+        PACKAGES.put("Naran & Kaghan", new Object[]{50000, 5, "PTDC Motel Naran", "https://en.wikipedia.org/wiki/Kaghan_Valley"});
+        PACKAGES.put("Fairy Meadows Trek", new Object[]{50000, 5, "Fairy Meadows Cottages", "https://en.wikipedia.org/wiki/Fairy_Meadows"});
+        PACKAGES.put("Kashmir Neelum Valley", new Object[]{55000, 5, "Pearl Continental, Muzaffarabad", "https://en.wikipedia.org/wiki/Neelum_District"});
+        PACKAGES.put("Gilgit Adventure", new Object[]{60000, 6, "Gilgit Serena Hotel", "https://en.wikipedia.org/wiki/Gilgit"});
+        PACKAGES.put("Chitral & Kalash Valley", new Object[]{65000, 6, "Hindukush Heights", "https://en.wikipedia.org/wiki/Kalash_Valleys"});
+        PACKAGES.put("Hunza Valley", new Object[]{75000, 7, "Hunza Serena Inn", "https://en.wikipedia.org/wiki/Hunza_Valley"});
+        PACKAGES.put("Skardu & Deosai", new Object[]{95000, 8, "Serena Shigar Fort", "https://en.wikipedia.org/wiki/Skardu"});
     }
 
     @Override
@@ -39,6 +47,9 @@ public class AiPlannerActivity extends AppCompatActivity {
         EditText etDays = findViewById(R.id.et_days);
         Button btnGenerate = findViewById(R.id.btn_generate_itinerary);
         TextView tvResult = findViewById(R.id.tv_result);
+
+        // Make the TextView clickable
+        tvResult.setMovementMethod(LinkMovementMethod.getInstance());
 
         btnGenerate.setOnClickListener(v -> {
             String budgetInput = etBudget.getText().toString().trim();
@@ -61,8 +72,7 @@ public class AiPlannerActivity extends AppCompatActivity {
                 return;
             }
 
-            String itinerary = generateItinerary(bestPackage, days, budget);
-            tvResult.setText(itinerary);
+            displayItineraryWithLink(tvResult, bestPackage, days, budget);
         });
     }
 
@@ -85,14 +95,16 @@ public class AiPlannerActivity extends AppCompatActivity {
         return bestMatch;
     }
 
-    private String generateItinerary(String destination, int days, int budget) {
+    private void displayItineraryWithLink(TextView tvResult, String destination, int days, int budget) {
         Object[] packageDetails = PACKAGES.get(destination);
         String hotel = (String) packageDetails[2];
+        String wikiUrl = (String) packageDetails[3];
 
         StringBuilder sb = new StringBuilder();
         sb.append("Suggested Destination: ").append(destination).append("\n");
         sb.append("Based on Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n");
-        sb.append("Recommended Hotel: ").append(hotel).append("\n\n");
+        sb.append("Recommended Hotel: ").append(hotel).append("\n");
+        sb.append("More Info: Click here to read on Wikipedia").append("\n\n");
         sb.append("--- ITINERARY ---\n\n");
 
         if (destination.equals("Hunza Valley")) {
@@ -161,6 +173,25 @@ public class AiPlannerActivity extends AppCompatActivity {
             sb.append("Day 4: Return journey via Kund Malir Beach.");
         }
 
-        return sb.toString();
+        // Create a SpannableString to make the link clickable
+        String fullText = sb.toString();
+        SpannableString spannableString = new SpannableString(fullText);
+
+        String linkText = "Click here to read on Wikipedia";
+        int startIndex = fullText.indexOf(linkText);
+        int endIndex = startIndex + linkText.length();
+
+        if (startIndex >= 0) {
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(@NonNull View widget) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(wikiUrl));
+                    startActivity(browserIntent);
+                }
+            };
+            spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        tvResult.setText(spannableString);
     }
 }

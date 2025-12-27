@@ -89,8 +89,18 @@
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
+                        
+                    <TextView
+                        android:id="@+id/wiki_link_swat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More on Wikipedia"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -178,8 +188,18 @@
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
+                        
+                    <TextView
+                        android:id="@+id/wiki_link_fairy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More on Wikipedia"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -267,8 +287,18 @@
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
+                        
+                    <TextView
+                        android:id="@+id/wiki_link_chitral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More on Wikipedia"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -356,8 +386,18 @@
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
+                        
+                    <TextView
+                        android:id="@+id/wiki_link_murree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More on Wikipedia"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -445,8 +485,18 @@
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
+                        
+                    <TextView
+                        android:id="@+id/wiki_link_gwadar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Learn More on Wikipedia"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

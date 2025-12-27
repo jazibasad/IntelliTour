@@ -1,6 +1,7 @@
 package com.example.intellitour;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,9 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -45,15 +43,11 @@ public class SplashActivity extends AppCompatActivity {
 
         // Navigate to next activity after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            Intent intent;
-            if (currentUser != null) {
-                // User is signed in, go to MainActivity
-                intent = new Intent(SplashActivity.this, MainActivity.class);
-            } else {
-                // No user is signed in, go to LoginActivity
-                intent = new Intent(SplashActivity.this, LoginActivity.class);
-            }
+            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+
+            Intent intent = isLoggedIn ? new Intent(SplashActivity.this, MainActivity.class) :
+                                         new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }, 3000); // Total splash screen duration

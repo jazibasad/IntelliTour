@@ -1,13 +1,12 @@
 package com.example.intellitour;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
         
         // Handle Logout
         btnLogout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
+            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("currentUserEmail");
+            editor.apply();
             
             // Navigate back to LoginActivity
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);

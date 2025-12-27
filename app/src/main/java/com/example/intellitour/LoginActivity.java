@@ -1,6 +1,7 @@
 package com.example.intellitour;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,18 +10,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
+        if (isLoggedIn) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
 
-        mAuth = FirebaseAuth.getInstance();
+        setContentView(R.layout.activity_login);
 
         TextInputEditText etEmail = findViewById(R.id.et_email);
         TextInputEditText etPassword = findViewById(R.id.et_password);
@@ -36,19 +41,20 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            // Sign in success, navigate to MainActivity
-                            Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finishAffinity();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Authentication failed: " + task.getException().getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    });
+            String storedPassword = prefs.getString("password_" + email, null);
+
+            if (storedPassword != null && storedPassword.equals(password)) {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("isLoggedIn", true);
+                editor.putString("currentUserEmail", email);
+                editor.apply();
+
+                Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
+                finishAffinity();
+            } else {
+                Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
+            }
         });
 
         tvSignup.setOnClickListener(v -> {
