@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.card.MaterialCardView;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -65,9 +62,9 @@ public class AiPlannerActivity extends AppCompatActivity {
         EditText etBudget = findViewById(R.id.et_budget);
         EditText etDays = findViewById(R.id.et_days);
         Button btnGenerate = findViewById(R.id.btn_generate_itinerary);
-        TextView tvResult = findViewById(R.id.tv_result);
-
-        tvResult.setMovementMethod(LinkMovementMethod.getInstance());
+        
+        MaterialCardView resultCard = findViewById(R.id.itinerary_card_result);
+        TextView tvPlaceholder = findViewById(R.id.tv_result_placeholder);
 
         btnGenerate.setOnClickListener(v -> {
             if (tflite == null) {
@@ -87,7 +84,10 @@ public class AiPlannerActivity extends AppCompatActivity {
             float days = Float.parseFloat(daysInput);
 
             String recommendedPackage = recommendPackage(budget, days);
-            displayItineraryWithLink(tvResult, recommendedPackage, (int)days, (int)budget);
+
+            tvPlaceholder.setVisibility(View.GONE);
+            resultCard.setVisibility(View.VISIBLE);
+            displayItinerary(resultCard, recommendedPackage, (int)days, (int)budget);
         });
     }
 
@@ -108,8 +108,6 @@ public class AiPlannerActivity extends AppCompatActivity {
         float[][] output = new float[1][10];
         tflite.run(input, output);
 
-        Log.d(TAG, "Model output: " + Arrays.toString(output[0]));
-
         int maxIndex = 0;
         float maxProbability = -1;
         for (int i = 0; i < output[0].length; i++) {
@@ -118,61 +116,50 @@ public class AiPlannerActivity extends AppCompatActivity {
                 maxIndex = i;
             }
         }
-        Log.d(TAG, "Recommendation index: " + maxIndex);
         return PACKAGE_NAMES[maxIndex];
     }
 
-    private void displayItineraryWithLink(TextView tvResult, String destination, int days, int budget) {
+    private void displayItinerary(MaterialCardView card, String destination, int days, int budget) {
         Object[] packageDetails = PACKAGES.get(destination);
         if (packageDetails == null) {
-            tvResult.setText("Could not find details for the recommended package: " + destination);
+            Toast.makeText(this, "Could not find details for " + destination, Toast.LENGTH_SHORT).show();
             return;
         }
 
         String hotel = (String) packageDetails[2];
         String wikiUrl = (String) packageDetails[3];
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Suggested Destination: ").append(destination).append("\n");
-        sb.append("Based on Budget: Rs. ").append(budget).append(" | Duration: ").append(days).append(" Days\n");
-        sb.append("Recommended Hotel: ").append(hotel).append("\n");
-        sb.append("More Info: Click here to read on Wikipedia").append("\n\n");
-        sb.append("--- ITINERARY ---\n\n");
+        // Find views inside the card
+        TextView tvDestinationName = card.findViewById(R.id.tv_destination_name);
+        TextView tvBudgetInfo = card.findViewById(R.id.tv_budget_info);
+        TextView tvDurationInfo = card.findViewById(R.id.tv_duration_info);
+        TextView tvHotelInfo = card.findViewById(R.id.tv_hotel_info);
+        TextView tvItineraryDetails = card.findViewById(R.id.tv_itinerary_details);
+        TextView tvWikiLink = card.findViewById(R.id.tv_wiki_link);
 
-        // ... (rest of the itinerary logic)
+        // Set the text
+        tvDestinationName.setText(destination);
+        tvBudgetInfo.setText("Budget: Rs. " + budget);
+        tvDurationInfo.setText("Duration: " + days + " Days");
+        tvHotelInfo.setText("Stay at: " + hotel);
+        tvWikiLink.setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(wikiUrl));
+            startActivity(browserIntent);
+        });
+
+        // Build the itinerary string
+        StringBuilder itinerary = new StringBuilder();
         if (destination.equals("Hunza Valley")) {
-            sb.append("Day 1: Arrival in Gilgit, drive to Hunza.\n");
-            sb.append("Day 2: Visit Karimabad, Baltit Fort, Altit Fort.\n");
-            sb.append("Day 3: Eagle's Nest sunrise & Duikar.\n");
-            sb.append("Day 4: Day trip to Attabad Lake & Passu Cones.\n");
+            itinerary.append("Day 1: Arrival in Gilgit, drive to Hunza.\n");
+            itinerary.append("Day 2: Visit Karimabad, Baltit Fort, Altit Fort.\n");
+            itinerary.append("Day 3: Eagle's Nest sunrise & Duikar.");
         } else if (destination.equals("Skardu & Deosai")) {
-            sb.append("Day 1: Fly to Skardu, check-in.\n");
-            sb.append("Day 2: Shangrila Resort (Lower Kachura Lake).\n");
-            sb.append("Day 3: Upper Kachura Lake & boating.\n");
-        } else if (destination.equals("Naran & Kaghan")) {
-            sb.append("Day 1: Drive from Islamabad to Naran.\n");
-            sb.append("Day 2: Jeep ride to Saif-ul-Malook Lake.\n");
+            itinerary.append("Day 1: Fly to Skardu, check-in.\n");
+            itinerary.append("Day 2: Shangrila Resort (Lower Kachura Lake).\n");
         } else {
-            sb.append("Detailed itinerary available upon booking.");
+            itinerary.append("Detailed itinerary available upon booking.");
         }
-
-        String fullText = sb.toString();
-        SpannableString spannableString = new SpannableString(fullText);
-        String linkText = "Click here to read on Wikipedia";
-        int startIndex = fullText.indexOf(linkText);
-
-        if (startIndex >= 0) {
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(@NonNull View widget) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(wikiUrl));
-                    startActivity(browserIntent);
-                }
-            };
-            spannableString.setSpan(clickableSpan, startIndex, startIndex + linkText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-        tvResult.setText(spannableString);
+        tvItineraryDetails.setText(itinerary.toString());
     }
 
     @Override

@@ -29,9 +29,8 @@
             android:textColor="@color/text_secondary"
             android:layout_marginBottom="40dp"/>
 
-        <!-- Budget Input -->
+        <!-- Input Fields -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_budget"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,8 +38,7 @@
             android:layout_marginBottom="20dp"
             app:startIconDrawable="@android:drawable/ic_menu_manage"
             app:boxStrokeColor="@color/colorPrimary"
-            app:hintTextColor="@color/colorPrimary"
-            app:startIconTint="@color/icon_tint">
+            app:hintTextColor="@color/colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_budget"
@@ -49,9 +47,7 @@
                 android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Days Input -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_days"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,8 +55,7 @@
             android:layout_marginBottom="32dp"
             app:startIconDrawable="@android:drawable/ic_menu_today"
             app:boxStrokeColor="@color/colorPrimary"
-            app:hintTextColor="@color/colorPrimary"
-            app:startIconTint="@color/icon_tint">
+            app:hintTextColor="@color/colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_days"
@@ -81,10 +76,12 @@
 
         <!-- Itinerary Results Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/itinerary_card_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
-            app:cardElevation="8dp">
+            app:cardElevation="8dp"
+            android:visibility="gone"> <!-- Initially hidden -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,45 +89,103 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <TextView
+                    android:id="@+id/tv_destination_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Destination Name"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="@color/colorPrimary"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp">
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@android:drawable/ic_menu_compass"
-                        app:tint="@color/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/tv_budget_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Budget: Rs. 0"
+                        android:textColor="@color/text_secondary"/>
 
                     <TextView
+                        android:id="@+id/tv_duration_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Duration: 0 Days"
+                        android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_menu_myplaces"
+                        app:tint="@color/colorAccent" />
+
+                    <TextView
+                        android:id="@+id/tv_hotel_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your Suggested Itinerary"
-                        android:textSize="22sp"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_marginStart="16dp"/>
+                        android:layout_marginStart="8dp"
+                        android:text="Stay at: Hotel Name"
+                        android:textColor="@color/text_secondary"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#E0E0E0"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginVertical="16dp"/>
 
                 <TextView
-                    android:id="@+id/tv_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daily Plan"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_itinerary_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Your personalized plan will appear here..."
-                    android:textSize="16sp"
-                    android:lineSpacingExtra="6dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Day 1: ...\nDay 2: ..."
                     android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/tv_wiki_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Learn More on Wikipedia"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <TextView 
+            android:id="@+id/tv_result_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your personalized plan will appear here..."
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"/>
 
     </LinearLayout>
 </ScrollView>
