@@ -10,88 +10,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="More Packages (Page 2)"
+            android:text="More Packages"
             android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Explore even more destinations."
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="24dp"/>
 
         <!-- Package 6: Swat -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimaryDark"/>
-
+                    android:src="@drawable/pkg_swat" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Swat Valley (Switzerland of East)"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5 Days / 4 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Explore Kalam, Malam Jabba, and the beautiful Mahodand Lake."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Swat Serena Hotel"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_swat"
                         android:layout_width="wrap_content"
@@ -100,23 +77,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 45,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_swat"
                             android:layout_width="wrap_content"
@@ -133,64 +112,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorAccent"/>
-
+                    android:src="@drawable/pkg_fairy_meadows" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fairy Meadows Trek"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5 Days / 4 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Adventure trek to the base of Nanga Parbat. Camping under the stars."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Fairy Meadows Cottages"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_fairy"
                         android:layout_width="wrap_content"
@@ -199,23 +162,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 50,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_fairy"
                             android:layout_width="wrap_content"
@@ -232,64 +197,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimary"/>
-
+                    android:src="@drawable/pkg_chitral" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chitral &amp; Kalash Valley"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6 Days / 5 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Immerse yourself in the unique culture of the Kalash people and breathtaking landscapes."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Hindukush Heights"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_chitral"
                         android:layout_width="wrap_content"
@@ -298,23 +247,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 65,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_chitral"
                             android:layout_width="wrap_content"
@@ -331,64 +282,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimaryDark"/>
-
+                    android:src="@drawable/pkg_murree" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Murree &amp; Galiyat"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3 Days / 2 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="A quick escape to the Queen of Hills. Visit Mall Road, Patriata, and Nathia Gali."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Pearl Continental, Bhurban"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_murree"
                         android:layout_width="wrap_content"
@@ -397,23 +332,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 25,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_murree"
                             android:layout_width="wrap_content"
@@ -430,64 +367,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorAccent"/>
-
+                    android:src="@drawable/pkg_gwadar" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gwadar Beach &amp; Ormara"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4 Days / 3 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Enjoy the pristine beaches of Gwadar, the Sphinx, and the scenic Coastal Highway."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Zaver Pearl Continental Hotel"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_gwadar"
                         android:layout_width="wrap_content"
@@ -496,23 +417,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 40,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_gwadar"
                             android:layout_width="wrap_content"
@@ -524,7 +447,7 @@
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_prev_page"
             android:layout_width="match_parent"

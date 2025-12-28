@@ -10,88 +10,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Explore Pakistan (Page 1)"
+            android:text="Explore Pakistan"
             android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Discover the beauty of Pakistan's northern areas."
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="24dp"/>
 
         <!-- Package 1: Hunza Valley -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorAccent" />
-
+                    android:src="@drawable/pkg_hunza" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hunza Valley Exploration"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7 Days / 6 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Discover the breathtaking beauty of Hunza Valley, from Karimabad to Attabad Lake."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Hunza Serena Inn"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_hunza"
                         android:layout_width="wrap_content"
@@ -100,23 +77,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 75,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_hunza"
                             android:layout_width="wrap_content"
@@ -133,64 +112,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimary"/>
-
+                    android:src="@drawable/pkg_skardu" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Skardu &amp; Deosai Plains"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="8 Days / 7 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="An adventurous journey to the land of giants. Explore Skardu, Shangrila, and the vast Deosai National Park."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Serena Shigar Fort"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_skardu"
                         android:layout_width="wrap_content"
@@ -199,23 +162,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 95,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_skardu"
                             android:layout_width="wrap_content"
@@ -227,69 +192,53 @@
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        
-        <!-- Package 3: Naran & Kaghan -->
+
+        <!-- Package 3: Naran -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimaryDark"/>
-
+                    android:src="@drawable/pkg_naran" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Naran &amp; Kaghan Valley Tour"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5 Days / 4 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Visit the stunning Saif-ul-Malook lake, Babusar Top, and the lush green valleys of Naran and Kaghan."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: PTDC Motel Naran"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_naran"
                         android:layout_width="wrap_content"
@@ -298,23 +247,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 50,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_naran"
                             android:layout_width="wrap_content"
@@ -331,64 +282,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorAccent"/>
-
+                    android:src="@drawable/pkg_gilgit" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gilgit Adventure"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="6 Days / 5 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Experience the rich culture of Gilgit, visit Naltar Valley, and explore ancient Buddhist rock carvings."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Gilgit Serena Hotel"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_gilgit"
                         android:layout_width="wrap_content"
@@ -397,23 +332,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 60,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_gilgit"
                             android:layout_width="wrap_content"
@@ -430,64 +367,48 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
-
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@color/colorPrimary"/>
-
+                    android:src="@drawable/pkg_kashmir" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kashmir Neelum Valley"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textColor="@color/colorPrimary"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5 Days / 4 Nights"
                         android:textSize="14sp"
                         android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Paradise on Earth. Visit Arang Kel, Sharda Peeth, and the mesmerizing Ratti Gali Lake."
-                        android:textSize="14sp"
-                        android:textColor="@color/text_secondary"
-                        android:layout_marginBottom="12dp"/>
-                        
+                        android:layout_marginTop="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stay at: Pearl Continental, Muzaffarabad"
-                        android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                        android:layout_marginTop="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_myplaces"
                         android:drawablePadding="8dp"
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
-                        android:layout_marginBottom="12dp"
                         app:drawableTint="@color/colorAccent" />
-                        
                     <TextView
                         android:id="@+id/wiki_link_kashmir"
                         android:layout_width="wrap_content"
@@ -496,23 +417,25 @@
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:layout_marginBottom="16dp"/>
-
+                        android:layout_marginTop="12dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginVertical="16dp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Rs. 55,000"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             android:textStyle="bold"
                             android:textColor="@color/colorAccent"/>
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_book_kashmir"
                             android:layout_width="wrap_content"
@@ -524,7 +447,7 @@
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-        
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_next_page"
             android:layout_width="match_parent"
