@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.intellitour"
-        minSdk 24
+        minSdk 26 // Updated from 24 to 26
         targetSdk 36
         versionCode 1
         versionName "1.0"
@@ -26,6 +26,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    aaptOptions {
+        noCompress "tflite"
     }
 }
 
@@ -50,6 +53,10 @@ dependencies {
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.auth
     implementation libs.firebase.firestore
+
+    // TensorFlow Lite
+    implementation 'org.tensorflow:tensorflow-lite:2.15.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
