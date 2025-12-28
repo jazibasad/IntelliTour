@@ -90,7 +90,6 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (enteredAmount.equals(cleanRequiredAmount)) {
                     dialog.dismiss();
-                    // Amount is correct, now save the booking to Firestore
                     saveBookingToFirestore(packageName, requiredAmount, method);
                 } else {
                     Toast.makeText(this, "Incorrect amount. Please enter exactly " + requiredAmount, Toast.LENGTH_LONG).show();
@@ -131,7 +130,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void showSuccessDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Payment Confirmed!")
-                .setMessage("Your booking is complete. You will receive a confirmation email shortly.")
+                .setMessage("Your booking has been successfully confirmed.")
                 .setPositiveButton("OK", (dialog, which) -> {
                     finishAffinity();
                     startActivity(new Intent(PaymentActivity.this, MainActivity.class));
