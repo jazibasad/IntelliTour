@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AI Trip Planner"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/colorPrimary"
             android:layout_marginBottom="8dp"/>
@@ -34,11 +34,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Budget (Rs)"
+            android:hint="Enter Your Budget (Rs.)"
             android:layout_marginBottom="20dp"
-            app:startIconDrawable="@android:drawable/ic_menu_manage"
             app:boxStrokeColor="@color/colorPrimary"
-            app:hintTextColor="@color/colorPrimary">
+            app:hintTextColor="@color/colorPrimary"
+            app:startIconDrawable="@android:drawable/ic_menu_manage">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_budget"
@@ -51,11 +51,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Number of Days"
+            android:hint="Enter Number of Days"
             android:layout_marginBottom="32dp"
-            app:startIconDrawable="@android:drawable/ic_menu_today"
             app:boxStrokeColor="@color/colorPrimary"
-            app:hintTextColor="@color/colorPrimary">
+            app:hintTextColor="@color/colorPrimary"
+            app:startIconDrawable="@android:drawable/ic_menu_today">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_days"
@@ -74,14 +74,14 @@
             app:cornerRadius="8dp"
             android:layout_marginBottom="40dp"/>
 
-        <!-- Itinerary Results Card -->
+        <!-- Itinerary Results Card (Initially hidden) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/itinerary_card_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:visibility="gone"> <!-- Initially hidden -->
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Budget: Rs. 0"
+                        android:text="Price: Rs. 0"
                         android:textColor="@color/text_secondary"/>
 
                     <TextView

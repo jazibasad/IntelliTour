@@ -5,10 +5,20 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface WeatherService {
+
+    // Endpoint for current weather
     @GET("data/2.5/weather")
     Call<WeatherResponse> getWeather(
-        @Query("q") String city,
-        @Query("appid") String apiKey,
-        @Query("units") String units
+            @Query("q") String city,
+            @Query("appid") String apiKey,
+            @Query("units") String units
+    );
+
+    // Endpoint for 5-day forecast
+    @GET("data/2.5/forecast")
+    Call<ForecastResponse> getForecast(
+            @Query("q") String city,
+            @Query("appid") String apiKey,
+            @Query("units") String units
     );
 }

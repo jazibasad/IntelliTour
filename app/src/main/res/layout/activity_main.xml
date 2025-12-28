@@ -10,7 +10,7 @@
     <View
         android:id="@+id/header_background"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="230dp"
         android:background="@drawable/header_gradient"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +39,6 @@
         app:layout_constraintStart_toStartOf="@id/tv_app_title"
         app:layout_constraintTop_toBottomOf="@id/tv_app_title" />
     
-    <!-- Logout Button -->
     <ImageButton
         android:id="@+id/btn_logout"
         android:layout_width="48dp"
@@ -66,13 +65,14 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_ai_plan"
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E0E0E0"
             android:clickable="true"
             android:focusable="true">
 
@@ -93,10 +93,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AI Trip Planner"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
                     android:textColor="@color/text_primary"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get smart suggestions"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -104,13 +111,14 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_map"
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E0E0E0"
             android:clickable="true"
             android:focusable="true">
 
@@ -131,10 +139,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Explore Map"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
                     android:textColor="@color/text_primary"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find new places"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -142,13 +157,14 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_weather"
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E0E0E0"
             android:clickable="true"
             android:focusable="true">
 
@@ -169,10 +185,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Weather"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
                     android:textColor="@color/text_primary"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check the forecast"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -180,13 +203,14 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_packages"
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E0E0E0"
             android:clickable="true"
             android:focusable="true">
 
@@ -207,10 +231,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Packages"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
                     android:textColor="@color/text_primary"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View tour deals"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

@@ -48,7 +48,7 @@
         <!-- API Key for Geoapify (Placeholder) -->
         <meta-data
             android:name="com.geoapify.API_KEY"
-            android:value="YOUR_GEOAPIFY_API_KEY_HERE" />
+            android:value="405eb2971c4f46d1b62548c1237c7170" />
 
         <activity
             android:name=".AiPlannerActivity"

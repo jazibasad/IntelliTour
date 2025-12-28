@@ -1,93 +1,113 @@
 package com.example.intellitour;
 
 import android.Manifest;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.maplibre.android.MapLibre;
+import org.maplibre.android.camera.CameraPosition;
 import org.maplibre.android.camera.CameraUpdateFactory;
 import org.maplibre.android.geometry.LatLng;
 import org.maplibre.android.location.LocationComponent;
 import org.maplibre.android.location.LocationComponentActivationOptions;
-import org.maplibre.android.location.modes.CameraMode;
 import org.maplibre.android.location.modes.RenderMode;
-import org.maplibre.android.maps.MapLibreMap;
 import org.maplibre.android.maps.MapView;
-import org.maplibre.android.maps.OnMapReadyCallback;
+import org.maplibre.android.maps.MapLibreMap;
 import org.maplibre.android.maps.Style;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity {
 
-    private MapView mMapView;
-    private MapLibreMap mMap;
+    private static final String TAG = "MapActivity";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    // TODO: Replace with your actual Geoapify API Key
-    private static final String GEOAPIFY_API_KEY = "8d377dc7366f4b4da7efe5a9db90ef42";
+
+    private MapView mapView;
+    private MapLibreMap map;
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize MapLibre
         MapLibre.getInstance(this);
-
         setContentView(R.layout.activity_map);
 
-        mMapView = findViewById(R.id.mapView);
-        mMapView.onCreate(savedInstanceState);
-        mMapView.getMapAsync(this);
-    }
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-    @Override
-    public void onMapReady(@NonNull MapLibreMap mapLibreMap) {
-        mMap = mapLibreMap;
+        String geoapifyApiKey = getGeoapifyApiKey();
 
-        // Set style using Geoapify URL
-        // Style can be: osm-carto, osm-bright, osm-liberty, maptiler-3d-gl-style, etc.
-        // See https://apidocs.geoapify.com/docs/maps/map-tiles/
-        String styleUrl = "https://maps.geoapify.com/v1/styles/osm-bright/style.json?apiKey=" + GEOAPIFY_API_KEY;
-
-        mMap.setStyle(new Style.Builder().fromUri(styleUrl), style -> {
-            // Style loaded successfully
-
-            // Default location: Islamabad
-            LatLng islamabad = new LatLng(33.6844, 73.0479);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(islamabad, 10));
-
-            enableMyLocation(style);
-        });
-    }
-
-    private void enableMyLocation(@NonNull Style loadedMapStyle) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            
-            // Get an instance of the component
-            LocationComponent locationComponent = mMap.getLocationComponent();
-
-            // Activate with options
-            locationComponent.activateLocationComponent(
-                    LocationComponentActivationOptions.builder(this, loadedMapStyle).build());
-
-            // Enable to make component visible
-            locationComponent.setLocationComponentEnabled(true);
-
-            // Set the component's camera mode
-            locationComponent.setCameraMode(CameraMode.TRACKING);
-
-            // Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
+        if (geoapifyApiKey == null || geoapifyApiKey.equals("YOUR_GEOAPIFY_API_KEY_HERE")) {
+            Toast.makeText(this, "Geoapify API Key is missing in AndroidManifest.xml!", Toast.LENGTH_LONG).show();
+            return;
         }
+
+        mapView = findViewById(R.id.map_view);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(mapLibreMap -> {
+            map = mapLibreMap;
+            String styleUrl = "https://maps.geoapify.com/v1/styles/osm-bright/style.json?apiKey=" + geoapifyApiKey;
+            map.setStyle(styleUrl, style -> {
+                Log.d(TAG, "Map style loaded successfully.");
+                enableLocationFeatures(style);
+            });
+        });
+
+        FloatingActionButton fabMyLocation = findViewById(R.id.fab_my_location);
+        fabMyLocation.setOnClickListener(v -> zoomToCurrentLocation());
+    }
+
+    private String getGeoapifyApiKey() {
+        try {
+            ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            return appInfo.metaData.getString("com.geoapify.API_KEY");
+        } catch (PackageManager.NameNotFoundException | NullPointerException e) {
+            Log.e(TAG, "Failed to load meta-data from manifest", e);
+            return null;
+        }
+    }
+
+    private void enableLocationFeatures(@NonNull Style loadedMapStyle) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Activate the LocationComponent to show the blue dot
+            LocationComponent locationComponent = map.getLocationComponent();
+            LocationComponentActivationOptions activationOptions = LocationComponentActivationOptions.builder(this, loadedMapStyle).build();
+            locationComponent.activateLocationComponent(activationOptions);
+            locationComponent.setLocationComponentEnabled(true);
+            locationComponent.setRenderMode(RenderMode.COMPASS);
+
+            // Then, get a one-time location update to zoom the camera
+            zoomToCurrentLocation();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    private void zoomToCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Location permission not granted.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null && map != null) {
+                LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                CameraPosition position = new CameraPosition.Builder()
+                        .target(userLocation)
+                        .zoom(16) // Zoom in close
+                        .build();
+                map.animateCamera(CameraUpdateFactory.newCameraPosition(position), 1500);
+            } else {
+                Toast.makeText(this, "Could not get current location. Please ensure location is enabled.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -95,52 +115,55 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                mMap.getStyle(this::enableMyLocation);
+                if (map != null && map.getStyle() != null) {
+                    enableLocationFeatures(map.getStyle());
+                }
             } else {
                 Toast.makeText(this, "Location permission denied.", Toast.LENGTH_LONG).show();
             }
         }
     }
 
+    // --- MapView Lifecycle Methods ---
     @Override
     protected void onStart() {
         super.onStart();
-        mMapView.onStart();
+        if (mapView != null) mapView.onStart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mMapView.onResume();
+        if (mapView != null) mapView.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mMapView.onPause();
+        if (mapView != null) mapView.onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mMapView.onStop();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mMapView.onSaveInstanceState(outState);
+        if (mapView != null) mapView.onStop();
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        mMapView.onLowMemory();
+        if (mapView != null) mapView.onLowMemory();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mMapView.onDestroy();
+        if (mapView != null) mapView.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mapView != null) mapView.onSaveInstanceState(outState);
     }
 }
