@@ -1,70 +1,101 @@
-# IntelliTour - Your Smart Travel Companion
+# IntelliTour - Smart Tourism Companion App
 
-IntelliTour is a modern, feature-rich Android application designed to be a smart travel companion for tourists in Pakistan. It provides users with everything they need to plan their next adventure, from AI-powered trip suggestions to real-time weather forecasts and tour package bookings.
-
----
-
-## Features
-
-*   **User Authentication**: Secure user registration and login functionality using **Firebase Authentication**.
-*   **Cloud Data Storage**: User profile information and tour bookings are saved securely online using **Cloud Firestore**.
-*   **AI-Powered Trip Planner**: A sophisticated, on-device Machine Learning feature that suggests the perfect tour package based on a user's budget and desired trip duration. 
-*   **Interactive Map**: A full-screen map feature that shows the user's current location with a live "blue dot" and allows for searching other locations. Powered by **MapLibre** and **Geoapify**.
-*   **Real-time Weather Forecast**: A professional weather screen that displays the current weather conditions and a 5-day future forecast for any city. Powered by the **OpenWeatherMap API**.
-*   **Tour Packages**: A beautifully designed, multi-page list of 10 real-world tour packages in Pakistan, complete with images and descriptions.
-*   **Wikipedia Integration**: Each tour package and AI suggestion includes a direct link to the location's Wikipedia page for more information.
-*   **Booking & Payment Simulation**: A complete booking flow where users can select a package and simulate a payment, with the booking details saved to their user account in Firestore.
-*   **Professional UI/UX**: The app features a modern, clean, and professional design with a consistent color scheme, custom fonts, and smooth animations.
+IntelliTour is a feature-rich Android application designed to revolutionize tourism in Pakistan. It serves as a smart travel companion, integrating AI-based recommendations, real-time weather forecasting, interactive mapping, and a seamless booking system to provide a complete travel experience.
 
 ---
 
-## Technologies & Libraries Used
+## 📱 Features
 
-*   **UI & Design**: Material Design 3, `MaterialCardView`, `ConstraintLayout`, `NestedScrollView`, `RecyclerView`
-*   **Authentication**: Firebase Authentication
-*   **Database**: Cloud Firestore
-*   **Machine Learning**: TensorFlow Lite (for on-device inference)
-*   **Networking**: Retrofit & Gson (for weather API calls)
-*   **Mapping**: MapLibre GL Native for Android & Geoapify (for map tiles)
-*   **Image Loading**: (Implicitly used for package images, can be added if needed, e.g., Glide/Picasso)
-*   **Location Services**: Google Play Services `FusedLocationProviderClient`
+### 1. **AI-Powered Trip Planner**
+*   **On-Device Machine Learning**: Utilizes a custom **TensorFlow Lite** model to analyze user preferences.
+*   **Smart Recommendations**: Users input their **Budget** and **Duration**, and the app intelligently suggests the best matching tour package (e.g., Hunza, Skardu, Naran).
+*   **Detailed Itineraries**: Instantly generates a day-by-day travel plan based on the suggested package.
+
+### 2. **Interactive Maps & Navigation**
+*   **Vector Maps**: Powered by **MapLibre GL** and **Geoapify** for fast, beautiful map rendering.
+*   **Live Tracking**: Shows the user's current location with a directional "puck" indicator.
+*   **Search**: Includes a floating search bar to find and zoom into any location globally.
+*   **Smart Zoom**: Automatically centers and zooms on the user's location for better orientation.
+
+### 3. **Real-Time Weather Forecast**
+*   **Current Conditions**: Displays live temperature, humidity, and weather conditions for any searched city.
+*   **5-Day Forecast**: Provides a scrollable list of future weather predictions to help users plan ahead.
+*   **Powered by**: Integration with the **OpenWeatherMap API** using **Retrofit** for efficient networking.
+
+### 4. **Tour Packages & Booking**
+*   **Curated Destinations**: Features 10 premium tour packages including Hunza, Skardu, Swat, Kashmir, and more.
+*   **Visual Cards**: Beautifully designed cards with local imagery and key details (Price, Duration, Hotel).
+*   **Wikipedia Integration**: Direct links to Wikipedia articles for each destination.
+*   **Booking System**: A streamlined booking flow where users can select a package.
+*   **Payment Simulation**: Supports simulated payments via Easypaisa and Bank Transfer.
+
+### 5. **User Accounts & Cloud Sync**
+*   **Authentication**: Secure Sign Up and Login system powered by **Firebase Authentication**.
+*   **Cloud Database**: Stores user profiles and booking history securely in **Cloud Firestore**.
 
 ---
 
-## Setup and Configuration
+## 🛠️ Tech Stack
 
-To build and run this project, you will need to configure three API keys.
+*   **Language**: Java
+*   **Minimum SDK**: API 26 (Android 8.0)
+*   **UI Components**: Material Design 3, ConstraintLayout, NestedScrollView, RecyclerView, CardView.
+*   **Backend**: Firebase (Auth, Firestore).
+*   **Machine Learning**: TensorFlow Lite.
+*   **Networking**: Retrofit, Gson.
+*   **Mapping**: MapLibre SDK, Geoapify Tiles.
+*   **Location**: Google Play Services (FusedLocationProvider).
 
-### 1. Firebase
+---
 
-1.  Create a new project in the [Firebase Console](https://console.firebase.google.com/).
-2.  Add an Android app with the package name `com.example.intellitour`.
-3.  Download the `google-services.json` file and place it in the `app/` directory.
-4.  Enable **Authentication** (Email/Password method) and **Cloud Firestore** in the console.
+## 🚀 Setup & Installation
 
-### 2. Weather API (OpenWeatherMap)
+To run this project locally, you must configure the following API keys and assets.
 
-1.  Create a free account at [OpenWeatherMap](https://openweathermap.org/)
-2.  Get your API key from your account dashboard.
-3.  Open `app/src/main/java/com/example/intellitour/WeatherActivity.java` and paste your key into the `API_KEY` variable.
+### 1. Firebase Setup
+1.  Go to the [Firebase Console](https://console.firebase.google.com/).
+2.  Create a project and add an Android app with package: `com.example.intellitour`.
+3.  Download `google-services.json` and place it in the `app/` folder.
+4.  Enable **Authentication** (Email/Password) and **Firestore** in the console.
 
-### 3. Map API (Geoapify)
+### 2. Map Configuration (Geoapify)
+1.  Sign up at [Geoapify](https://www.geoapify.com/).
+2.  Get your API Key.
+3.  Open `app/src/main/AndroidManifest.xml` and replace the placeholder:
+    ```xml
+    <meta-data
+        android:name="com.geoapify.API_KEY"
+        android:value="YOUR_GEOAPIFY_KEY_HERE" />
+    ```
 
-1.  Create a free account at [Geoapify](https://www.geoapify.com/)
-2.  Get your API key from your account dashboard.
-3.  Open `app/src/main/AndroidManifest.xml` and paste your key into the `com.geoapify.API_KEY` meta-data value.
+### 3. Weather Configuration (OpenWeatherMap)
+1.  Sign up at [OpenWeatherMap](https://openweathermap.org/).
+2.  Get your API Key.
+3.  Open `WeatherActivity.java` and replace the placeholder:
+    ```java
+    private static final String API_KEY = "YOUR_OPENWEATHER_KEY_HERE";
+    ```
 
-### 4. AI Model
+### 4. AI Model Setup
+1.  Ensure the trained model file `recommendation_model.tflite` is present in:
+    `app/src/main/assets/`
 
-This project uses a custom-trained TensorFlow Lite model for its AI Planner.
+### 5. Image Assets
+1.  Ensure the 10 package images (`pkg_hunza.jpg`, `pkg_skardu.jpg`, etc.) are placed in:
+    `app/src/main/res/drawable/`
 
-1.  The model was trained in a Python environment (e.g., Google Colab) using a dataset of the 10 tour packages.
-2.  The trained model, named `recommendation_model.tflite`, must be placed in the `app/src/main/assets/` directory.
+---
 
-### 5. Package Images
+## 📂 Project Structure
 
-The tour package screens require 10 local image files.
+*   **`AiPlannerActivity.java`**: Handles TFLite model inference and itinerary generation.
+*   **`MapActivity.java`**: Manages MapLibre map, location permissions, and search.
+*   **`WeatherActivity.java`**: Handles Retrofit API calls for weather data.
+*   **`PackagesActivity.java`**: Displays the list of tour packages.
+*   **`PaymentActivity.java`**: Manages the booking confirmation and Firestore write operations.
 
-1.  Find 10 images, one for each package.
-2.  Name them according to the convention (`pkg_hunza.jpg`, `pkg_skardu.jpg`, etc.).
-3.  Place all 10 images in the `app/src/main/res/drawable/` directory.
+---
+
+## 📝 License
+
+This project is created for educational and development purposes.
